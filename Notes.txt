@@ -1,0 +1,116 @@
+Unit Testing is a software testing method by which individual
+units of source code are tested to determine whether they
+are fit for use.
+
+
+Pytest is the frameworks contains couple of classes ,method decoratos,etc..,
+which will help us orgnize our code.
+Pytest have all features of nose (testing framework) and Unitest
+or Junit.
+
+It is opensource.
+it can run Suite or set of test cases in parallel mode,
+it can do Pre-Post condition.
+it can skip or fail test cases whenever you want for 
+certain conditions.
+
+NOTE : In pytest use have to named file with '_' then 
+it will else it will not detect it as pytest file.
+eg : test_1.py,1_pytest.py, pro_test.py,
+2_test1.py 
+etc..
+
+pytest will run all the files from you current
+dir/subdirectory test_*.py or *_test.py 
+
+For getting all information regarding flags,keyword,markers
+and fixture in pytest use : 
+pytest -h or --help  = for flags keyword . 
+pytest --markers = for markers in pytest . 
+pytest --fixtures = for fixtures in pytest.
+
+To execute after creating tests : 
+just enter/hit in cmd or your excute in your environment :
+pytest = will just show Failed Test Cases 
+pytest -rA  = Will show passed and failed test cases both 
+here : in -rA , A = All 
+we can use other instead of A :
+like (f)ailed , (s)kipped , (E)rror , (x)failed , (X)passed,
+(P)assed with output , (a)ll except passed (p/P), or (A)ll 
+Note : all letter in bracket are options. 
+By default it show : 'fE' which is failed and Error
+when we execute using only 'pytest' . 
+
+for executing single test file in our pytest folder :
+just go inside that folder where all files are then write in cmd 
+pytest [testfilename]
+
+for All summary use :
+pytest [testfilename] -rA 
+
+for executing specific name/String inside folder :
+pytest [testfilename] -rA -k "String"
+NOTE : in above command 'k' is called flag in pytest .
+k = keyword
+if that string/keyword matched then it will run that test .
+
+for more additional information : 
+pytest [testfilename] -rA -k [functionname or classname] -v 
+here 'v' = verbose
+
+-rA = for summary of all tests 
+-fE = for summary of all failed and error in tests.
+
+for Getting an XML file report use --junitxml="XMLfilename.xml":
+eg : 
+1.> pytest --junitxml="report1.xml"
+2.> pytest -rA --junitxml="report1.xml"
+
+for getting html report use --html=htmlfilename.html :
+1.> pytest --html=MYHtmlReport.html
+2.> pytest -rA --html=Report2.html
+
+By using Allure Report we can get more detailed report of testcases :
+
+
+NOw Markers :
+- Marker as name refered we mark some of our test cases which gives 
+some additional information our tests .
+- We can mark a test with custom meta-data.
+
+To run custom markers :
+pytest filename.py -m CustomMarkerName
+
+
+we can also use 'and' and 'or' boolean operators in markers like 
+pytest filename.py -m "marker1 or marker2"
+pytest filename.py -m "marker1 and marker2"
+
+
+But to use our custom marker properly we have to register it
+in 'pytest.ini' file .
+
+> this pytest.ini file is like a configuration file . 
+> we can make many custom markers there . 
+> we can even provide pre-defined flags to perform or show 
+report of our custom markers or tests.
+
+for using different test parallelly :
+
+1.> install python distribution
+pip install pytest-xdist
+
+2.> Now run your multiple tests :
+pytest filename.py -n NumberOfCPUs
+
+NOTE : each CPU will run 1 test so ,
+ 1 CPU -> 1 test 
+ 2 CPU -> 2 Test parallely ,
+ 5 CPU -> 5 Test parallely ,...etc
+eg : 
+> pytest test_fixtures.py -n 3 -> this will run 3 tests parallely.
+
+
+
+
+
